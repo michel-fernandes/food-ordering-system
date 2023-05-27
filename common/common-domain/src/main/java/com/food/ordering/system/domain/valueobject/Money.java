@@ -7,6 +7,8 @@ import java.util.Objects;
 public class Money {
     private final BigDecimal amount;
 
+    public static final Money ZERO = new Money(BigDecimal.ZERO);
+
     public Money(BigDecimal amount) {
         this.amount = amount;
     }
@@ -27,11 +29,11 @@ public class Money {
         return new Money(setScale(this.amount.add(money.getAmount())));
     }
 
-    public Money substract(Money money){
+    public Money subtract(Money money){
         return new Money(setScale(this.amount.subtract(money.getAmount())));
     }
 
-    public Money multuply(int multiplier){
+    public Money multiply(int multiplier){
         return new Money(setScale(this.amount.multiply(new BigDecimal(multiplier))));
     }
 
@@ -48,6 +50,7 @@ public class Money {
         return Objects.hash(amount);
     }
 
+    //use this opeation to reduce decimal rouding error with this sthatistical technic supply in Java lib
     private BigDecimal setScale(BigDecimal input){
         return input.setScale(2, RoundingMode.HALF_EVEN);
     }

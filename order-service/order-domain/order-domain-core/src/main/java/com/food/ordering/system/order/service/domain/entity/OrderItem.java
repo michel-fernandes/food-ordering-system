@@ -3,21 +3,36 @@ package com.food.ordering.system.order.service.domain.entity;
 import com.food.ordering.system.domain.entity.BaseEntity;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.OrderId;
-import com.food.ordering.system.order.service.domain.valueobject.OrdeItemId;
+import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 
-public class OrderItem extends BaseEntity<OrdeItemId> {
+public class OrderItem extends BaseEntity<OrderItemId> {
     private OrderId orderId;
     private final Product propoduct;
     private final int quantity;
     private final Money price;
     private final Money subTotal;
 
+    void initilizeOrderItem(OrderId orderId, OrderItemId orderItemId) {
+        this.orderId = orderId;
+        super.setId(orderItemId);
+    }
+
+    boolean isPriceValid(){
+        return price.isGreaterThanZero() &&
+                price.equals(propoduct.getPrice()) &&
+                price.multiply(quantity).equals(subTotal);
+    }
+
     private OrderItem(Builder builder) {
-        super.setId(builder.ordeItemId);
+        super.setId(builder.orderItemId);
         propoduct = builder.propoduct;
         quantity = builder.quantity;
         price = builder.price;
         subTotal = builder.subTotal;
+    }
+
+    public static Builder builder(){
+        return new Builder();
     }
 
     public OrderId getOrderId() {
@@ -41,7 +56,7 @@ public class OrderItem extends BaseEntity<OrdeItemId> {
     }
 
     public static final class Builder {
-        private OrdeItemId ordeItemId;
+        private OrderItemId orderItemId;
         private Product propoduct;
         private int quantity;
         private Money price;
@@ -54,8 +69,8 @@ public class OrderItem extends BaseEntity<OrdeItemId> {
             return new Builder();
         }
 
-        public Builder ordeItemId(OrdeItemId val) {
-            ordeItemId = val;
+        public Builder ordeItemId(OrderItemId val) {
+            orderItemId = val;
             return this;
         }
 
