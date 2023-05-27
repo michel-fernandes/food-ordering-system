@@ -14,10 +14,22 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
         this.active = active;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
     private Restaurant(Builder builder) {
         super.setId(builder.restauranId);
         products = builder.products;
         active = builder.active;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static final class Builder {
