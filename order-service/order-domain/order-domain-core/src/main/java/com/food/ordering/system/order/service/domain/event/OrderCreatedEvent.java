@@ -4,9 +4,9 @@ import com.food.ordering.system.order.service.domain.entity.Order;
 
 import java.time.ZonedDateTime;
 
-public class OrderCreateEvent extends OrderEvent {
+public class OrderCreatedEvent extends OrderEvent {
 
-    public OrderCreateEvent(Order order, ZonedDateTime createdAt) {
+    public OrderCreatedEvent(Order order, ZonedDateTime createdAt) {
         super(order, createdAt);
     }
 }
