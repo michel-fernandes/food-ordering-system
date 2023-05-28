@@ -14,7 +14,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @Slf4j
-public class OrderDomainServiceImpl implements OrderDomainInterface{
+public class OrderDomainService implements OrderDomainInterface{
 
     private static final String UTC_ZONE_ID = "UTC";
 
@@ -64,7 +64,7 @@ public class OrderDomainServiceImpl implements OrderDomainInterface{
     // TODO: refactor loop inside loop to reduce time cost (can be used hash)
     private void setOrderProductUnformation(Order order, Restaurant restaurant) {
         order.getItems().forEach(orderItem -> restaurant.getProducts().forEach(restaurantProduct -> {
-            Product currentProduct = orderItem.getPropoduct();
+            Product currentProduct = orderItem.getProduct();
             if(currentProduct.equals(restaurantProduct)){
                 currentProduct.updateWithConfirmedNameAndPrice(restaurantProduct.getName(),
                         restaurantProduct.getPrice());
