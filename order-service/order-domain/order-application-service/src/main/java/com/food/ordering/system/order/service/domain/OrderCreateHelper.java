@@ -42,10 +42,10 @@ public class OrderCreateHelper {
     public OrderCreateEvent persitOrder(CreateOrderCommand createOrderCommand){
         checkCustomer(createOrderCommand.getCustomerId());
         Restaurant restaurant = checkRestaurant(createOrderCommand);
-        Order order = orderDataMapper.createOrderCommandoToOrder(createOrderCommand);
+        Order order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
         OrderCreateEvent orderCreateEvent = orderDomainService.validateAndInitiateOrder(order, restaurant);
-        Order orderResult = saveOrder(orderCreateEvent.getOrder());
-        log.info("Order is created with id: {}", orderResult.getId().getValue());
+        saveOrder(orderCreateEvent.getOrder());
+        log.info("Order is created with id: {}", orderCreateEvent.getOrder().getId().getValue());
         return orderCreateEvent;
     }
 

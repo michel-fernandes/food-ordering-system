@@ -32,7 +32,7 @@ public class OrderDataMapper {
                 .build();
     }
 
-    public Order createOrderCommandoToOrder(CreateOrderCommand createOrderCommand){
+    public Order createOrderCommandToOrder(CreateOrderCommand createOrderCommand){
         return Order.builder()
                 .customerId(new CustomerId(createOrderCommand.getCustomerId()))
                 .restaurantId(new RestaurantId(createOrderCommand.getRestauranId()))
@@ -42,9 +42,10 @@ public class OrderDataMapper {
                 .build();
     }
 
-    public CreateOrderResponse orderToCreateOrderResponse(Order order){
+    public CreateOrderResponse orderToCreateOrderResponse(Order order, String message){
         return CreateOrderResponse.builder()
                 .orderTrackingId(order.getTrackingId().getValue())
+                .message(message)
                 .orderStatus(order.getOrderStatus())
                 .build();
     }
