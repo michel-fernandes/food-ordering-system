@@ -5,6 +5,7 @@
       <directory url="file://$PROJECT_DIR$/infrastructure/kafka/kafka-consumer/src/main/resources/archetype-resources" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/infrastructure/kafka/kafka-model/src/main/resources/archetype-resources" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/infrastructure/kafka/kafka-data/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/infrastructure/kafka/kafka-config-data/src/main/resources/archetype-resources" includeSubdirectories="true" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
@@ -15,7 +16,6 @@
         <module name="order-messaging" />
         <module name="kafka-model" />
         <module name="order-application-service" />
-        <module name="infrastructure" />
         <module name="kafka-consumer" />
         <module name="common-domain" />
         <module name="order-application" />
