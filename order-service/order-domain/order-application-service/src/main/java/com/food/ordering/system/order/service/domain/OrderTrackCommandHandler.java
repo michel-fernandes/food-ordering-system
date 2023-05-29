@@ -31,8 +31,7 @@ public class OrderTrackCommandHandler {
                 orderRepository.findByTrackingId(new TrackingId(trackOrderQuery.getOrderTrackingId()));
         if(optionalOrder.isEmpty()){
             log.warn("Could not find order with tracking id: {}", trackOrderQuery.getOrderTrackingId());
-            throw new OrderNotFoundException(String.format("Could not find order with tracking id: %s",
-                    trackOrderQuery.getOrderTrackingId()));
+            throw new OrderNotFoundException("Could not find order with tracking id: " + trackOrderQuery.getOrderTrackingId());
         }
         log.info("Found order with tracking id: {}", trackOrderQuery.getOrderTrackingId());
         return orderDataMapper.orderToTrackOrderResponse(optionalOrder.get());

@@ -53,7 +53,7 @@ public class OrderCreateHelper {
         Optional<Customer> optionalCustomer = customerRepository.findCustumer(customerId);
         if(optionalCustomer.isEmpty()){
             log.warn("Could not find customer with customer id: {}", customerId);
-            throw new OrderDomainException(String.format("Could not find customer with customer id: %s", customerId));
+            throw new OrderDomainException("Could not find customer with customer id: " + customerId);
         }
     }
 
@@ -62,8 +62,8 @@ public class OrderCreateHelper {
         Optional<Restaurant> optionalRestaurant = restaurantRepository.findRestaurantInformation(restaurant);
         if(optionalRestaurant.isEmpty()){
             log.warn("Could not find restaurant with restaurant id: {}", restaurant.getId());
-            throw new OrderDomainException(String.format("Could not find find restaurant with restaurant id: %s",
-                    restaurant.getId()));
+            throw new OrderDomainException("Could not find find restaurant with restaurant id: " +
+                    restaurant.getId());
         }
         return optionalRestaurant.get();
     }
