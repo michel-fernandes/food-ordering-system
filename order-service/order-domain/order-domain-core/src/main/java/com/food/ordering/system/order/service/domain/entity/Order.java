@@ -13,12 +13,14 @@ import java.util.UUID;
 public class Order extends AggregateRoot<OrderId> {
     private final CustomerId customerId;
     private final RestaurantId restaurantId;
-    private final StreetAddress deliStreetAddress;
+    private final StreetAddress deliveryStreetAddress;
     private final Money price;
     private final List<OrderItem> items;
     private TrackingId trackingId;
     private OrderStatus orderStatus;
     private List<String> failureMessages;
+
+    public static final String FAILURE_MESSAGE_DELIMITER = ",";
 
     public void initilizeOrder(){
         setId(new OrderId(UUID.randomUUID()));
@@ -115,7 +117,7 @@ public class Order extends AggregateRoot<OrderId> {
         super.setId(builder.orderId);
         customerId = builder.customerId;
         restaurantId = builder.restaurantId;
-        deliStreetAddress = builder.deliStreetAddress;
+        deliveryStreetAddress = builder.deliveryStreetAddress;
         price = builder.price;
         items = builder.items;
         trackingId = builder.trackingId;
@@ -128,7 +130,7 @@ public class Order extends AggregateRoot<OrderId> {
 
     public CustomerId getCustomerId() {return customerId;}
     public RestaurantId getRestaurantId() {return restaurantId;}
-    public StreetAddress getDeliStreetAddress() {return deliStreetAddress;}
+    public StreetAddress getDeliveryStreetAddress() {return deliveryStreetAddress;}
     public Money getPrice() {return price;}
     public List<OrderItem> getItems() {return items;}
     public TrackingId getTrackingId() {return trackingId;}
@@ -139,7 +141,7 @@ public class Order extends AggregateRoot<OrderId> {
         private OrderId orderId;
         private CustomerId customerId;
         private RestaurantId restaurantId;
-        private StreetAddress deliStreetAddress;
+        private StreetAddress deliveryStreetAddress;
         private Money price;
         private List<OrderItem> items;
         private TrackingId trackingId;
@@ -164,8 +166,8 @@ public class Order extends AggregateRoot<OrderId> {
             return this;
         }
 
-        public Builder deliStreetAddress(StreetAddress val) {
-            deliStreetAddress = val;
+        public Builder deliveryStreetAddress(StreetAddress val) {
+            deliveryStreetAddress = val;
             return this;
         }
 

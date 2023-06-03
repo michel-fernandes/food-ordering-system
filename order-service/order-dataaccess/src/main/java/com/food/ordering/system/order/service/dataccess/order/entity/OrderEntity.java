@@ -27,7 +27,7 @@ public class OrderEntity {
     private OrderStatus orderStatus;
     private String failureMessages;
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
-    private OrderAdressEntity orderAdressEntity;
+    private OrderAdressEntity address;
     @OneToMany(mappedBy = "oder", cascade = CascadeType.ALL)
     private List<OrderItemEntity> items;
 
