@@ -4,7 +4,7 @@ import com.food.ordering.system.order.service.domain.dto.create.CreateOrderComma
 import com.food.ordering.system.order.service.domain.entity.Customer;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.entity.Restaurant;
-import com.food.ordering.system.order.service.domain.event.OrderCreateEvent;
+import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
 import com.food.ordering.system.order.service.domain.mapper.OrderDataMapper;
 import com.food.ordering.system.order.service.domain.ports.output.repository.CustomerRepository;
@@ -39,14 +39,14 @@ public class OrderCreateHelper {
     }
 
     @Transactional
-    public OrderCreateEvent persitOrder(CreateOrderCommand createOrderCommand){
+    public OrderCreatedEvent persitOrder(CreateOrderCommand createOrderCommand){
         checkCustomer(createOrderCommand.getCustomerId());
         Restaurant restaurant = checkRestaurant(createOrderCommand);
         Order order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
-        OrderCreateEvent orderCreateEvent = orderDomainService.validateAndInitiateOrder(order, restaurant);
-        saveOrder(orderCreateEvent.getOrder());
-        log.info("Order is created with id: {}", orderCreateEvent.getOrder().getId().getValue());
-        return orderCreateEvent;
+        OrderCreatedEvent orderCreatedEvent = orderDomainService.validateAndInitiateOrder(order, restaurant);
+        saveOrder(orderCreatedEvent.getOrder());
+        log.info("Order is created with id: {}", orderCreatedEvent.getOrder().getId().getValue());
+        return orderCreatedEvent;
     }
 
     private void checkCustomer(UUID customerId) {
