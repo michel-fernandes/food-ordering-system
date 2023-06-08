@@ -8,4 +8,6 @@ import java.util.UUID;
 public interface CustomerRepository {
 
     Optional<Customer> findCustumer(UUID custumerId);
+
+    Customer save(Customer customer);
 }
