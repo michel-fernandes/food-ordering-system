@@ -5,17 +5,19 @@
  */
 package com.food.ordering.system.kafka.avro.model;
 
-import org.apache.avro.message.BinaryMessageDecoder;
-import org.apache.avro.message.BinaryMessageEncoder;
-import org.apache.avro.message.SchemaStore;
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7236931599500337997L;
+  private static final long serialVersionUID = 6449062843108022681L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PaymentResponseAvroModel\",\"namespace\":\"com.food.ordering.system.kafka.avro.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"sagaId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"paymentId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"customerId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"orderId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"price\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":10,\"scale\":2}},{\"name\":\"createAt\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"paymentOrderStatus\",\"type\":{\"type\":\"enum\",\"name\":\"PaymentOrderStatus\",\"symbols\":[\"COMPLETED\",\"CANCEELLED\",\"FAILED\"]}},{\"name\":\"failureMessages\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PaymentResponseAvroModel\",\"namespace\":\"com.food.ordering.system.kafka.avro.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"sagaId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"paymentId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"customerId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"orderId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"price\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":10,\"scale\":2}},{\"name\":\"createdAt\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"paymentOrderStatus\",\"type\":{\"type\":\"enum\",\"name\":\"PaymentOrderStatus\",\"symbols\":[\"COMPLETED\",\"CANCEELLED\",\"FAILED\"]}},{\"name\":\"failureMessages\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -81,7 +83,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
   private java.lang.String customerId;
   private java.lang.String orderId;
   private java.math.BigDecimal price;
-  private java.time.Instant createAt;
+  private java.time.Instant createdAt;
   private com.food.ordering.system.kafka.avro.model.PaymentOrderStatus paymentOrderStatus;
   private java.util.List<java.lang.String> failureMessages;
 
@@ -100,18 +102,18 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * @param customerId The new value for customerId
    * @param orderId The new value for orderId
    * @param price The new value for price
-   * @param createAt The new value for createAt
+   * @param createdAt The new value for createdAt
    * @param paymentOrderStatus The new value for paymentOrderStatus
    * @param failureMessages The new value for failureMessages
    */
-  public PaymentResponseAvroModel(java.lang.String id, java.lang.String sagaId, java.lang.String paymentId, java.lang.String customerId, java.lang.String orderId, java.math.BigDecimal price, java.time.Instant createAt, com.food.ordering.system.kafka.avro.model.PaymentOrderStatus paymentOrderStatus, java.util.List<java.lang.String> failureMessages) {
+  public PaymentResponseAvroModel(java.lang.String id, java.lang.String sagaId, java.lang.String paymentId, java.lang.String customerId, java.lang.String orderId, java.math.BigDecimal price, java.time.Instant createdAt, com.food.ordering.system.kafka.avro.model.PaymentOrderStatus paymentOrderStatus, java.util.List<java.lang.String> failureMessages) {
     this.id = id;
     this.sagaId = sagaId;
     this.paymentId = paymentId;
     this.customerId = customerId;
     this.orderId = orderId;
     this.price = price;
-    this.createAt = createAt.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+    this.createdAt = createdAt.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
     this.paymentOrderStatus = paymentOrderStatus;
     this.failureMessages = failureMessages;
   }
@@ -127,7 +129,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
     case 3: return customerId;
     case 4: return orderId;
     case 5: return price;
-    case 6: return createAt;
+    case 6: return createdAt;
     case 7: return paymentOrderStatus;
     case 8: return failureMessages;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
@@ -163,7 +165,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
     case 3: customerId = value$ != null ? value$.toString() : null; break;
     case 4: orderId = value$ != null ? value$.toString() : null; break;
     case 5: price = (java.math.BigDecimal)value$; break;
-    case 6: createAt = (java.time.Instant)value$; break;
+    case 6: createdAt = (java.time.Instant)value$; break;
     case 7: paymentOrderStatus = (com.food.ordering.system.kafka.avro.model.PaymentOrderStatus)value$; break;
     case 8: failureMessages = (java.util.List<java.lang.String>)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
@@ -273,20 +275,20 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
   }
 
   /**
-   * Gets the value of the 'createAt' field.
-   * @return The value of the 'createAt' field.
+   * Gets the value of the 'createdAt' field.
+   * @return The value of the 'createdAt' field.
    */
-  public java.time.Instant getCreateAt() {
-    return createAt;
+  public java.time.Instant getCreatedAt() {
+    return createdAt;
   }
 
 
   /**
-   * Sets the value of the 'createAt' field.
+   * Sets the value of the 'createdAt' field.
    * @param value the value to set.
    */
-  public void setCreateAt(java.time.Instant value) {
-    this.createAt = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+  public void setCreatedAt(java.time.Instant value) {
+    this.createdAt = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
   }
 
   /**
@@ -370,7 +372,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
     private java.lang.String customerId;
     private java.lang.String orderId;
     private java.math.BigDecimal price;
-    private java.time.Instant createAt;
+    private java.time.Instant createdAt;
     private com.food.ordering.system.kafka.avro.model.PaymentOrderStatus paymentOrderStatus;
     private java.util.List<java.lang.String> failureMessages;
 
@@ -409,8 +411,8 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
         this.price = data().deepCopy(fields()[5].schema(), other.price);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
-      if (isValidValue(fields()[6], other.createAt)) {
-        this.createAt = data().deepCopy(fields()[6].schema(), other.createAt);
+      if (isValidValue(fields()[6], other.createdAt)) {
+        this.createdAt = data().deepCopy(fields()[6].schema(), other.createdAt);
         fieldSetFlags()[6] = other.fieldSetFlags()[6];
       }
       if (isValidValue(fields()[7], other.paymentOrderStatus)) {
@@ -453,8 +455,8 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
         this.price = data().deepCopy(fields()[5].schema(), other.price);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.createAt)) {
-        this.createAt = data().deepCopy(fields()[6].schema(), other.createAt);
+      if (isValidValue(fields()[6], other.createdAt)) {
+        this.createdAt = data().deepCopy(fields()[6].schema(), other.createdAt);
         fieldSetFlags()[6] = true;
       }
       if (isValidValue(fields()[7], other.paymentOrderStatus)) {
@@ -708,40 +710,40 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
     }
 
     /**
-      * Gets the value of the 'createAt' field.
+      * Gets the value of the 'createdAt' field.
       * @return The value.
       */
-    public java.time.Instant getCreateAt() {
-      return createAt;
+    public java.time.Instant getCreatedAt() {
+      return createdAt;
     }
 
 
     /**
-      * Sets the value of the 'createAt' field.
-      * @param value The value of 'createAt'.
+      * Sets the value of the 'createdAt' field.
+      * @param value The value of 'createdAt'.
       * @return This builder.
       */
-    public com.food.ordering.system.kafka.avro.model.PaymentResponseAvroModel.Builder setCreateAt(java.time.Instant value) {
+    public com.food.ordering.system.kafka.avro.model.PaymentResponseAvroModel.Builder setCreatedAt(java.time.Instant value) {
       validate(fields()[6], value);
-      this.createAt = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+      this.createdAt = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
       fieldSetFlags()[6] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'createAt' field has been set.
-      * @return True if the 'createAt' field has been set, false otherwise.
+      * Checks whether the 'createdAt' field has been set.
+      * @return True if the 'createdAt' field has been set, false otherwise.
       */
-    public boolean hasCreateAt() {
+    public boolean hasCreatedAt() {
       return fieldSetFlags()[6];
     }
 
 
     /**
-      * Clears the value of the 'createAt' field.
+      * Clears the value of the 'createdAt' field.
       * @return This builder.
       */
-    public com.food.ordering.system.kafka.avro.model.PaymentResponseAvroModel.Builder clearCreateAt() {
+    public com.food.ordering.system.kafka.avro.model.PaymentResponseAvroModel.Builder clearCreatedAt() {
       fieldSetFlags()[6] = false;
       return this;
     }
@@ -837,7 +839,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
         record.customerId = fieldSetFlags()[3] ? this.customerId : (java.lang.String) defaultValue(fields()[3]);
         record.orderId = fieldSetFlags()[4] ? this.orderId : (java.lang.String) defaultValue(fields()[4]);
         record.price = fieldSetFlags()[5] ? this.price : (java.math.BigDecimal) defaultValue(fields()[5]);
-        record.createAt = fieldSetFlags()[6] ? this.createAt : (java.time.Instant) defaultValue(fields()[6]);
+        record.createdAt = fieldSetFlags()[6] ? this.createdAt : (java.time.Instant) defaultValue(fields()[6]);
         record.paymentOrderStatus = fieldSetFlags()[7] ? this.paymentOrderStatus : (com.food.ordering.system.kafka.avro.model.PaymentOrderStatus) defaultValue(fields()[7]);
         record.failureMessages = fieldSetFlags()[8] ? this.failureMessages : (java.util.List<java.lang.String>) defaultValue(fields()[8]);
         return record;

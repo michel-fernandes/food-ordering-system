@@ -41,7 +41,7 @@
             }
         },
         {
-            "name": "createAt",
+            "name": "createdAt",
             "type": {
                 "type": "long",
                 "logicalType": "timestamp-millis"
