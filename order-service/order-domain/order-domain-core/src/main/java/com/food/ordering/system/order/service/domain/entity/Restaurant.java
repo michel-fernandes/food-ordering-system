@@ -62,5 +62,6 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
         public Restaurant build() {
             return new Restaurant(this);
         }
+
     }
 }

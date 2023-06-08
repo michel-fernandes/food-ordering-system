@@ -3,7 +3,7 @@ package com.food.ordering.system.order.service.dataccess.order.adapter;
 import com.food.ordering.system.order.service.dataccess.order.mapper.OrderDataAccessMapper;
 import com.food.ordering.system.order.service.dataccess.order.repository.OrderJpaRepository;
 import com.food.ordering.system.order.service.domain.entity.Order;
-import com.food.ordering.system.order.service.domain.ports.outputs.repository.OrderRepository;
+import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
 import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 import org.springframework.stereotype.Component;
 

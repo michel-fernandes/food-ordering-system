@@ -3,7 +3,7 @@ package com.food.ordering.system.order.service.dataccess.customer.adapter;
 import com.food.ordering.system.order.service.dataccess.customer.mapper.CustomerDataAccessMapper;
 import com.food.ordering.system.order.service.dataccess.customer.repository.CustomerJpaRepository;
 import com.food.ordering.system.order.service.domain.entity.Customer;
-import com.food.ordering.system.order.service.domain.ports.outputs.repository.CustomerRepository;
+import com.food.ordering.system.order.service.domain.ports.output.repository.CustomerRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
