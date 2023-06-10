@@ -1,34 +1,30 @@
 {
-    "namespace": "com.food.ordering.system.kafka.avro.model",
+    "namespace": "com.food.ordering.system.kafka.order.avro.model",
     "type": "record",
     "name": "PaymentRequestAvroModel",
     "fields": [
         {
             "name": "id",
             "type": {
-                "type": "string",
-                "logicalType": "uuid"
+                "type": "string"
             }
         },
         {
             "name": "sagaId",
             "type": {
-                "type": "string",
-                "logicalType": "uuid"
+                "type": "string"
             }
         },
         {
             "name": "customerId",
             "type": {
-                "type": "string",
-                "logicalType": "uuid"
+                "type": "string"
             }
         },
         {
             "name": "orderId",
             "type": {
-                "type": "string",
-                "logicalType": "uuid"
+                "type": "string"
             }
         },
         {
@@ -52,7 +48,7 @@
             "type": {
                 "type": "enum",
                 "name": "PaymentOrderStatus",
-                "symbols": ["PENDING", "CANCEELLED"]
+                "symbols": ["PENDING", "CANCELLED"]
             }
         }
     ]

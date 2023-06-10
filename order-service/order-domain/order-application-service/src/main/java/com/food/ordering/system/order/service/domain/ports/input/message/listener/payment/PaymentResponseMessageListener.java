@@ -6,5 +6,5 @@ public interface PaymentResponseMessageListener {
 
     void paymentCompleted(PaymentResponse paymentResponse);
 
-    void paymentCncelled(PaymentResponse paymentResponse);
+    void paymentCancelled(PaymentResponse paymentResponse);
 }
