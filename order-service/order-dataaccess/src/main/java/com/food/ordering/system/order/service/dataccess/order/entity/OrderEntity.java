@@ -28,7 +28,7 @@ public class OrderEntity {
     private String failureMessages;
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private OrderAdressEntity address;
-    @OneToMany(mappedBy = "oder", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItemEntity> items;
 
     @Override

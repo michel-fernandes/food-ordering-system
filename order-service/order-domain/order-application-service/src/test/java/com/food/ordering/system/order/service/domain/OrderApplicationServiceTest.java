@@ -145,7 +145,7 @@ public class OrderApplicationServiceTest {
         Order order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
         order.setId(new OrderId(ORDER_ID));
 
-        when(customerRepository.findCustumer(CUSTOMER_ID)).thenReturn(Optional.of(customer));
+        when(customerRepository.findByCustomerId(CUSTOMER_ID)).thenReturn(Optional.of(customer));
         when(restaurantRepository.findRestaurantInformation(orderDataMapper.createOrderCommandToRestaurant(createOrderCommand)))
                 .thenReturn(Optional.of(restaurantResponse));
         when(orderRepository.save(any(Order.class))).thenReturn(order);
